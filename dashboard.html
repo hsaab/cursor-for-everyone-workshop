@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revenue Analytics — Cursor Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Cursor</span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-sub">Revenue Analytics</span>
+      </div>
+      <div class="topbar-meta">
+        <span class="pill">Demo</span>
+        <span class="as-of" id="asOf">As of —</span>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="kpi-row" id="kpiRow"></section>
+
+      <section class="grid">
+        <article class="card card-wide">
+          <div class="card-head">
+            <h2>Revenue trend</h2>
+            <p class="card-sub">Total platform revenue by month</p>
+          </div>
+          <div class="chart chart-bars" id="trendChart"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2>Revenue by region</h2>
+            <p class="card-sub" id="regionSub">Latest month</p>
+          </div>
+          <div class="chart chart-hbars" id="regionChart"></div>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="card card-wide" id="gpuCard">
+          <div class="card-head">
+            <h2>Revenue by GPU type</h2>
+            <p class="card-sub">Breakdown across the customer base</p>
+          </div>
+          <div class="empty-state" id="gpuEmpty">
+            <div class="empty-icon" aria-hidden="true">▣</div>
+            <h3>No GPU-type breakdown yet</h3>
+            <p>
+              The granular numbers live in
+              <code>data/revenue_by_gpu_type.csv</code> — they just haven't been
+              added to this dashboard.
+            </p>
+            <p class="empty-hint">This is what we'll build together today.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      Demo data for the <strong>Cursor for Everyone</strong> workshop.
+      Figures are illustrative and don't represent any real company.
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

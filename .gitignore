@@ -1,0 +1,8 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# Local environment files (none expected in this demo)
+.env
+.env.*

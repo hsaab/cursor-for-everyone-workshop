@@ -1,0 +1,38 @@
+{
+  "$description": "Design tokens for the Cursor-branded Revenue Analytics demo. Mirrors the Figma design (Cursor brand, dark mode) so code and design stay in sync. Company-neutral on purpose — reuse across any workshop.",
+  "$figma": {
+    "file": "https://www.figma.com/design/<your-figma-file-key>",
+    "node": "1:2",
+    "frame": "Revenue by GPU type"
+  },
+  "color": {
+    "bg": "#14120B",
+    "surface": "#1B1913",
+    "surfaceRaised": "#201E18",
+    "border": "#2B2923",
+    "text": "#EDECEC",
+    "textMuted": "rgba(237,236,236,0.60)",
+    "textDim": "rgba(237,236,236,0.38)",
+    "accent": "#F54E00",
+    "accentLight": "#FF7A33",
+    "accentSoft": "rgba(245,78,0,0.16)",
+    "positive": "#3FB950",
+    "negative": "#F85149"
+  },
+  "gpuType": {
+    "GB200": "#F54E00",
+    "H100": "#C9B896",
+    "H200": "#A89A86",
+    "L40S": "#837C70",
+    "A100": "#5F5B54"
+  },
+  "radius": { "card": 14, "control": 10, "pill": 999 },
+  "space": { "xs": 4, "sm": 8, "md": 14, "lg": 20, "xl": 28 },
+  "type": {
+    "sectionTitle": { "size": 18, "weight": 600 },
+    "subhead": { "size": 11, "weight": 600, "letterSpacing": 1.5 },
+    "kpi": { "size": 26, "weight": 700 },
+    "body": { "size": 13, "weight": 400 },
+    "caption": { "size": 12, "weight": 400 }
+  }
+}

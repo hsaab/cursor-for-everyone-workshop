@@ -1,0 +1,28 @@
+---
+description: HTML/CSS conventions for the demo dashboard
+globs: *.html,*.css
+alwaysApply: false
+---
+
+# Dashboard HTML & CSS conventions
+
+The dashboard opens directly as a file (`file://`) with no build step. Keep it
+that way:
+
+- **Inline the data.** Never fetch at runtime — bake values into `data.js` so the
+  page works when double-clicked.
+- **Use the tokens.** Style with the CSS variables in `styles.css`
+  (e.g. `var(--accent)`); don't hardcode hex values in markup.
+- **Match the existing cards.** Reuse the `.card` / `.card-head` structure and
+  classes already in `dashboard.html` for new sections.
+- **Semantic & accessible.** Use real headings (`h2`/`h3`), put `aria-hidden` on
+  decorative glyphs, keep contrast readable.
+- **Keep files small.** Favor separate files over any single file > 300 lines.
+
+```html
+<!-- GOOD: reuse classes, color from a token, data inlined from data.js -->
+<article class="card">
+  <div class="card-head"><h2>Revenue by GPU type</h2></div>
+  <!-- chart bars use var(--accent); no runtime fetch -->
+</article>
+```

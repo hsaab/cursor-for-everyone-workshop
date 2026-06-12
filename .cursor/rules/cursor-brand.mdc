@@ -1,0 +1,26 @@
+---
+description: Cursor brand colors and a clean, sleek visual style for everything in this demo (dashboard and slides). Keep it company-neutral.
+alwaysApply: true
+---
+
+# Cursor brand & visual style
+
+This is a company-neutral **Cursor** demo. Keep everything on-brand and sleek;
+never hardcode another company's branding.
+
+## Colors — dark mode (default)
+- Background `#14120B` · Cards `#1B1913` · Borders `#2B2923`
+- Text `#EDECEC` (muted = 60% opacity)
+- Accent: **Cursor orange `#F54E00`** — use it sparingly, for the one thing that
+  should stand out.
+
+## Colors — light mode (if asked)
+- Background `#F7F7F4` · Text `#26251E` · Accent `#F54E00`
+
+Tokens live in `design/design-tokens.json` — reuse those values, don't invent new
+hex codes.
+
+## Style
+- Minimal and uncluttered: generous spacing, one or two type weights, one accent.
+- Charts: muted/neutral series + a single accent color for the key story.
+- Slides: clean or dark background, big numbers, one idea per slide, no clip art.
