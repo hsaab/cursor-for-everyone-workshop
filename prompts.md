@@ -42,23 +42,25 @@ shifting** (the Blackwell / GB200 ramp). The granular data already exists in
 
 ---
 
-## A note on connected tools (MCPs)
+## A note on connected tools (MCPs) — all optional
 
-Cursor connects to the tools you already use — Figma, Granola, Slack, Jira,
-Notion — through **MCPs**. **You don't need any accounts today.** Here's the deal:
+Cursor can connect to the tools you already use — Figma, Granola, Slack, Jira,
+Notion, Linear — through **MCPs**. **For today they're all optional:**
 
-- **You** do every step from the files already in this repo.
-- **Your host** runs the live MCP version on screen — the same result, pulled
-  straight from the real tool — just so you can see it's possible.
+- **Everyone** does every step from the files already in this repo — no accounts,
+  no setup. This is the default path.
+- **Your host** will demo the live MCP versions on screen so you can see they're real.
+- **Optional:** if you already have one of these MCPs connected, try the live
+  version yourself. Most people won't be able to today — totally fine, and you can
+  come back and try it later.
 
-| What you need | You use (in this repo) | Host shows live (MCP) |
-|---------------|------------------------|------------------------|
+| What you need | You use (in this repo) | Optional live version (MCP) |
+|---------------|------------------------|------------------------------|
 | The call notes | `transcript.md` | Granola |
 | The design | `design/` folder | Figma |
 | The work ticket | your Step 1 spec | Linear / Jira |
 
-The rule never changes: **anything your host does through an MCP, you can do right
-here from the repo.**
+The rule never changes: **the repo has everything you need; the MCPs are a bonus.**
 
 ---
 
@@ -81,8 +83,8 @@ You'll watch Cursor turn a rambling conversation into a structured list.
 > **There's a design for this.** A designer mocked up the new section — you have
 > it locally at `design/gpu-section-mock.svg` and `design/gpu-section-spec.md`
 > (with `design/design-tokens.json`). Add them to the prompt so your build matches
-> the design. *(Your host will pull the same design straight from Figma via the
-> Figma MCP — same design, just live.)*
+> the design. *(Optional: your host will pull the same design live from Figma via
+> the Figma MCP — and you can too if you have that MCP connected. Not required.)*
 
 Switch to **Agent** mode and paste:
 

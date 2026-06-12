@@ -1,10 +1,5 @@
 {
-  "$description": "Design tokens for the Cursor-branded Revenue Analytics demo. Mirrors the Figma design (Cursor brand, dark mode) so code and design stay in sync. Company-neutral on purpose — reuse across any workshop.",
-  "$figma": {
-    "file": "https://www.figma.com/design/<your-figma-file-key>",
-    "node": "1:2",
-    "frame": "Revenue by GPU type"
-  },
+  "$description": "Design tokens for the Cursor-branded Revenue Analytics demo (Cursor brand, dark mode). Company-neutral on purpose so the kit reuses across any workshop.",
   "color": {
     "bg": "#14120B",
     "surface": "#1B1913",

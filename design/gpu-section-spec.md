@@ -1,15 +1,15 @@
 # Design handoff — "Revenue by GPU type" section
 
-> This is the **local copy** of the design for the new dashboard section, so you
-> can follow along without a Figma account. In the workshop your host will pull
-> the **same** design straight from Figma using the Figma MCP — see
-> [`design/README.md`](./README.md) for how the local + live-MCP pattern works.
+> This is the **local copy** of the design — it's all you need to build the
+> section. Pulling it live from Figma is **optional**: your host will demo it via
+> the Figma MCP, and you can try it too if you happen to have that MCP connected.
+> See [`design/README.md`](./README.md) for the local + optional-MCP pattern.
 
 **Component:** `Revenue by GPU type` card (adds to the existing dashboard)
 **Source data:** [`data/revenue_by_gpu_type.csv`](../data/revenue_by_gpu_type.csv)
 **Visual reference:** [`design/revenue-by-gpu-type.png`](./revenue-by-gpu-type.png) (exported from Figma)
 **Tokens:** [`design/design-tokens.json`](./design-tokens.json)
-**Figma file:** https://www.figma.com/design/<your-figma-file-key> (frame `Revenue by GPU type`, node `1:2`)
+**Live source (optional):** the same design can be pulled from Figma via the Figma MCP — host demo only; nothing committed here. See [`README.md`](./README.md).
 
 ---
 
