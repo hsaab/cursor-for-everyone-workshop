@@ -12,319 +12,273 @@ flowchart LR
   Automate --> Listen
 ```
 
-**The loop:** listen → structure → build → verify → present → automate. Today you do it once by hand. By the end, you'll see how to make it repeat on its own.
 
----
 
-## Your role today
+**The loop:** listen, structure, build, verify, present, automate. Today you do it once by hand. By the end, you will see how to make it repeat on its own.
 
-For the next hour, you're on the team that owns a company's internal **revenue dashboard**. A leadership call just landed a familiar ask in your lap.
-
-| | |
-|---|---|
-| **Your goal** | Ship a dashboard feature and a board-ready slide deck |
-| **Why it matters** | This is everyday work: turning vague requests into real results |
+**Your role:** for the next hour you are on the team that owns a company's internal **revenue dashboard**. A leadership call just landed a familiar ask in your lap: ship a dashboard feature and a board-ready deck. This is everyday work, turning a vague request into a real result.
 
 ---
 
 ## Get set up (about 5 minutes)
 
-### 1. Install Cursor and sign in
+**1. Install Cursor and sign in.** Download from [cursor.com](https://cursor.com), open it, and sign in.
 
-Download Cursor from [cursor.com](https://cursor.com) if you haven't already. Open it and sign in.
+**2. Get the workshop folder.** No GitHub account or command line required. Pick whichever is easier.
 
-### 2. Get the workshop folder
+*Option A (recommended): let the Agent grab it.* Open a new chat (the panel on the right) and send:
 
-No GitHub account, no Git, no command line. Pick whichever feels easier.
+```
+Download this workshop and open it for me, no git needed. Use curl to fetch the ZIP,
+unzip it into my home folder, then open the unzipped folder:
+https://github.com/hsaab/cursor-for-everyone-workshop/archive/refs/heads/main.zip
+```
 
-**Option A (recommended): let Cursor's Agent grab it for you**
+When Cursor asks to run a command, click **Run**. That is the whole point of Cursor: you ask in plain English and the agent does the work.
 
-1. In Cursor, open a new chat (the Agent panel, usually on the right).
-2. Paste this and hit send:
+*Option B: download it yourself.* Open [the repo on GitHub](https://github.com/hsaab/cursor-for-everyone-workshop), click the green **Code** button, then **Download ZIP**. Unzip it, then in Cursor choose **File**, then **Open Folder**, and pick the unzipped folder.
 
-   ```
-   Download this workshop and open it for me, no git needed. Use curl to fetch the ZIP,
-   unzip it into my home folder, then open the unzipped folder:
-   https://github.com/hsaab/cursor-for-everyone-workshop/archive/refs/heads/main.zip
-   ```
-
-3. When Cursor asks to run a command, click **Run**. It downloads the files, unzips them, and opens the folder.
-
-That is the whole point of Cursor: you ask in plain English and the agent does the work. You just did your first one.
-
-**Option B: download it yourself (3 clicks)**
-
-1. Open [the workshop on GitHub](https://github.com/hsaab/cursor-for-everyone-workshop).
-2. Click the green **Code** button, then **Download ZIP**.
-3. Unzip it. In Cursor, choose **File → Open Folder** and pick the unzipped folder.
-
-> **What is GitHub?** It's where this project lives online, like a shared drive for a project's files. This repo is public, so anyone can grab it.
-
-> **Stuck on any step?** Paste what you see (or any error) into the Cursor chat and ask it to help. That trick works for the rest of the workshop too.
-
-### 3. Open the dashboard
-
-Double-click **`dashboard.html`** in the project folder. It opens in your browser.
-
-Notice the **"Revenue by GPU type"** card is empty. That's what we're going to fix.
-
-> **Tip:** In chat, type `@` to point Cursor at a specific file (for example `@transcript.md`).
+> **What is GitHub?** Where this project lives online, like a shared drive for a project's files. This repo is public, so anyone can grab it.
+>
+> **Stuck on anything?** Paste what you see (or any error) into the chat and ask Cursor to help. That trick works for the rest of the workshop too.
 
 ---
 
 ## Connected tools are optional
 
-Cursor can connect to tools you already use (Figma, Slack, Linear, and more) through **[MCP](https://cursor.com/docs/mcp)** servers and **[Plugins](https://cursor.com/docs/plugins)**. For today, **everything you need is already in this folder.** No extra accounts or setup.
+Cursor can connect to tools you already use (Figma, Slack, Linear, Granola, and more) through **[MCP](https://cursor.com/docs/mcp)** servers and **[Plugins](https://cursor.com/docs/plugins)**. For today, **everything you need is already in this folder.** No extra accounts.
 
-| What you need | In this repo | Optional live version |
-|---|---|---|
-| Call notes | `transcript.md` | Granola MCP |
-| Design | `design/` folder | Figma MCP |
-| Data | `data/revenue_by_gpu_type.csv` | Database MCP |
 
-Your host may demo the live versions on screen. You can try them later if you connect those tools. The repo always works on its own.
+| What you need | In this repo                   | Optional live version |
+| ------------- | ------------------------------ | --------------------- |
+| Call notes    | `transcript.md`                | Granola MCP           |
+| Design        | `design/` folder               | Figma MCP             |
+| Data          | `data/revenue_by_gpu_type.csv` | Database MCP          |
 
----
 
-## 📖 Step 1 · Understand the story
-
-Before touching anything, read the call notes.
-
-Open **`transcript.md`** in Cursor (click it in the left sidebar).
-
-**What's happening?**
-
-- Leadership loves the topline revenue number (~$415M in June).
-- But every review, someone asks: **"Which GPU types drive the revenue?"**
-- The dashboard only shows totals and regional splits. Casey is manually building charts in spreadsheets every month.
-- Riley wants to see the **mix shift over 6 months** (A100 tapering off, GB200 / Blackwell ramping up).
-- Jordan needs **branded slides for the board** by Thursday.
-
-**The data already exists** in `data/revenue_by_gpu_type.csv`. It just isn't in the dashboard yet.
-
-That's your job today.
+Your host may demo the live versions on screen. The repo always works on its own.
 
 ---
 
-## 🔍 Step 2 · Understand what we're working with
+## Step 1 · Send your first prompt
 
-### The project files
+Open a new chat with **Agent** mode selected, then ask something simple to get oriented:
 
-| File / folder | What it is |
-|---|---|
-| `dashboard.html` | The dashboard page (opens in your browser) |
-| `dashboard.js` | Logic that draws the charts |
-| `data.js` | The numbers baked into the page |
-| `styles.css` | Colors and layout |
-| `data/` | Raw data files (CSV spreadsheets) |
-| `design/` | Design specs, colors, and mockups |
+```
+I am doing a hands-on workshop in this project and I am not very technical.
+In a few plain-English bullets: what is this project and what will I build today?
+```
+
+**Pick the right model.** Cursor lets you choose which AI model powers the chat, and different models are good at different things. Switch models from the dropdown in the chat box.
+
+
+| Task                            | Model                        | Why                                  |
+| ------------------------------- | ---------------------------- | ------------------------------------ |
+| Planning, reasoning, messy docs | **Opus** (a reasoning model) | Better with ambiguity and tradeoffs  |
+| Writing and editing code        | **Composer 2.5**             | Fast and cost-efficient for building |
+| Quick questions                 | Any model                    | Light work, anything handles it      |
+
+
+> **Cost tip:** Opus can cost roughly **10x more** than Composer 2.5 for similar build work. A good pattern: **plan with Opus, build with Composer 2.5.** See [Models and pricing](https://cursor.com/docs/models-and-pricing).
+
+You also pick a **mode** (press **Shift + Tab** to switch): **Agent** builds and edits, **Plan** drafts an approach first, **Ask** is read-only for exploring, **Debug** chases tricky bugs. You will use all but Debug today. More in the [Agent docs](https://cursor.com/docs/agent/overview).
+
+---
+
+## Step 2 · Understand what is in the repo
+
+Let the agent give you the tour instead of reading code yourself. **Ask** mode is perfect here: it is read-only, so nothing changes while you explore. Switch to Ask and send a few questions:
+
+```
+Give me a quick, non-technical tour of this folder. What are the main files,
+what does each one do, and what is this dashboard for? Keep it to a short list.
+```
+
+```
+What does data.js do, and where do the dashboard's numbers come from?
+```
+
+For reference, here is what lives where:
+
+
+| File / folder    | What it is                                  |
+| ---------------- | ------------------------------------------- |
+| `dashboard.html` | The dashboard page (opens in your browser)  |
+| `dashboard.js`   | Logic that draws the charts                 |
+| `data.js`        | The numbers baked into the page             |
+| `styles.css`     | Colors and layout                           |
+| `data/`          | Raw data files (CSV spreadsheets)           |
+| `design/`        | Design spec, colors, and mockup             |
 | `.cursor/rules/` | Standing instructions Cursor always follows |
 
-Take a minute to click through these in the sidebar. You don't need to understand the code. Just know where things live.
 
-### See the dashboard now
+### See the dashboard in your browser
 
-Open **`dashboard.html`** in your browser if it's not already open. Scroll through it. Notice what's there (totals, regional split, revenue trend) and what's missing (GPU breakdown).
+Pick the option that fits your setup.
 
-### Pick the right model
+*Option A (you have Python, typical on a Mac): let the agent serve it.* In Agent mode, send:
 
-Cursor lets you choose which AI model powers your chat. Different models are good at different things.
+```
+I have Python installed on my Mac. Start a simple local web server in this
+folder and give me the localhost link to open dashboard.html in my browser.
+```
 
-| Task | Model to use | Why |
-|---|---|---|
-| Planning, reasoning, reading messy docs | **Opus** (or similar reasoning model) | Better at understanding ambiguity and tradeoffs |
-| Writing and editing code | **Composer 2.5** | Fast, cost-efficient, built for coding tasks |
-| Quick questions about files | Any model works | Ask mode is read-only anyway |
+Click **Run** when prompted, then open the link it gives you (something like `http://localhost:8000/dashboard.html`).
 
-> **Cost tip:** Opus is great for planning but can cost roughly **10x more** than Composer 2.5 for similar implementation work. A good pattern: **plan with Opus, build with Composer 2.5.**
+*Option B (no Python): open the file directly.* In Agent mode, send:
 
-Learn more: [Models and pricing](https://cursor.com/docs/models-and-pricing)
+```
+Reveal dashboard.html in Finder so I can double-click it to open in my browser.
+```
 
-### Know your modes
+Then double-click the file. (Or in the sidebar, right-click `dashboard.html`, choose Reveal in Finder, and double-click it.)
 
-Cursor has four chat modes. Press **Shift + Tab** to switch between them, or use the dropdown in the chat panel.
-
-| Mode | Best for | Can edit files? |
-|---|---|---|
-| **Agent** | Building features, making changes | Yes |
-| **Plan** | Complex work where you want to review the approach first | Yes (after you approve) |
-| **Ask** | Understanding code, exploring without changes | No (read-only) |
-| **Debug** | Tricky bugs that need investigation | Yes |
-
-Learn more: [Agent overview](https://cursor.com/docs/agent/overview)
+Either way, scroll through it. You will see the total, the regional split, and a revenue trend. Notice the **"Revenue by GPU type"** card is empty. That is what you will build.
 
 ---
 
-## 📋 Step 3 · Turn the messy call into a spec (Plan mode)
+## Step 3 · Understand the call
 
-Now let's structure the work before building anything.
+Before planning anything, get clear on what leadership actually asked for. The notes from the call are in `transcript.md`.
 
-1. Switch to **Plan** mode (Shift + Tab until you see "Plan").
-2. Select a **reasoning model** like Opus for this step.
-3. Paste this prompt:
+**A quick word on context and tokens.** Models read and write in **tokens**, small chunks of text (roughly pieces of words), and they work within a budget of them. Everything the model can see at once (your message, the files you attach, the chat so far) is its **context**. Attaching only what matters keeps that context focused, which makes answers faster, cheaper, and more accurate.
+
+That is what `@` is for. Type `@` to hand the model a specific file instead of making it guess or read everything. Point it at the transcript:
 
 ```
-@transcript.md Read this internal revenue review call and list exactly what
-they're asking for as a short, concrete spec. Group it into "dashboard changes"
-and "slides". Keep it to bullet points.
+@transcript.md This is an internal revenue review call. In a few bullets:
+what happened, who is asking for what, and the one thing the dashboard is still missing?
 ```
 
-Cursor will read the transcript, ask clarifying questions if needed, and produce a structured plan you can review and edit before any code gets written.
+Ask follow-ups until the ask is clear. For example:
 
-That's the power of [Plan mode](https://cursor.com/docs/agent/plan-mode): think first, build second.
+```
+@transcript.md What exactly does leadership want for the board on Thursday,
+and which GPU types should the dashboard show?
+```
+
+Nothing on your computer changes yet, this is still just understanding. More on attaching context in the [prompting docs](https://cursor.com/docs/agent/prompting).
 
 ---
 
-## 🎨 Step 4 · Iterate on the plan
+## Step 4a · Make a plan (Plan mode)
 
-Your plan is a draft. Now make it sharper by adding the design and teaching Cursor your preferences.
-
-### Add the design
-
-Tell Cursor about the mockup so the build matches what the designer intended. In the same Plan chat (or a new one), paste:
+Now structure the work before any code gets written. Switch to **Plan** mode (Shift + Tab) and pick a reasoning model like **Opus**. Then send:
 
 ```
-@design/gpu-section-spec.md @design/design-tokens.json @design/revenue-by-gpu-type.png
-Review the plan and update it to include building this GPU section to match
-this design spec and these color tokens.
+@transcript.md Turn this call into a short, concrete spec for what to build.
+Group it into "dashboard changes" and "slides". Bullet points only.
 ```
 
-### Set house rules with Rules
+Cursor reads the transcript, asks clarifying questions if needed, and produces a plan you can review and edit before building. That is the point of [Plan mode](https://cursor.com/docs/agent/plan-mode): think first, build second.
 
-**[Rules](https://cursor.com/docs/rules)** are standing instructions Cursor follows automatically. You write them once, and every future chat benefits.
+---
 
-This repo already has two in `.cursor/rules/`:
+## Step 4b · Shape the plan around the design and include the data
 
-| Rule | What it does |
-|---|---|
-| `cursor-brand.mdc` | Cursor colors and clean visual style (why the dashboard and slides stay on-brand) |
+Your plan is a draft. Make it match what the designer intended.
+
+First, **open the design and look at it**: open `design/revenue-by-gpu-type.png` in Cursor to see the mockup, and skim `design/gpu-section-spec.md` for the details (layout, colors, the story to surface).
+
+Then run one round of iteration to fold the design and data into the plan. In the same Plan chat, send:
+
+```
+@design/gpu-section-spec.md @design/design-tokens.json @design/gpu-section-mock.svg @data/revenue_by_gpu_type.csv
+Update the plan to match this design and data: use the GPU-type color tokens, inline
+the CSV with no runtime fetch, show the latest month plus a 6-month mix-shift trend,
+and flag the fastest grower and where GB200 overtakes A100.
+```
+
+Review the updated plan and approve it. It now carries everything needed to build.
+
+> **Optional:** the same design can be pulled live from Figma via the Figma MCP (usually a host demo). See `[design/README.md](./design/README.md)` for the local-plus-live pattern.
+
+---
+
+## Step 5 · Build it (Agent mode)
+
+The plan already has the design, data, and details, so building is the easy part. Switch to **Agent** mode, select **Composer 2.5**, and send:
+
+```
+Build the approved plan.
+```
+
+The [Agent](https://cursor.com/docs/agent/overview) works through the plan: it reads the relevant files, edits the data, HTML, CSS, and JavaScript, and shows you each change to review. You approved the what; it handles the how.
+
+---
+
+## Step 6 · While it builds: write a rule
+
+The build takes a minute, so let it run and **open a second chat** (the `+` at the top of the chat panel). Agents can work in parallel, so the first one keeps building while you do this.
+
+**[Rules](https://cursor.com/docs/rules)** are standing instructions Cursor follows automatically. Write one once and every future chat benefits. This repo already has two in `.cursor/rules/`:
+
+
+| Rule                 | What it does                               |
+| -------------------- | ------------------------------------------ |
+| `cursor-brand.mdc`   | Cursor colors and clean visual style       |
 | `dashboard-html.mdc` | How to format the dashboard's HTML and CSS |
 
-Open one in the sidebar. They're short.
 
-Now create your own. Type **`/create-rule`** in chat and describe what Cursor should always do:
+Open one, they are short. Now make your own with `/create-rule`:
 
 ```
 /create-rule Every chart on the dashboard needs labeled axes and a one-line
 "so what?" caption underneath. Apply it to *.html.
 ```
 
-Cursor saves it to `.cursor/rules/` and follows it from then on.
+Cursor saves it to `.cursor/rules/` and follows it from then on. By now the build from Step 5 is probably done, so flip back and review what changed.
 
 ---
 
-## 🚀 Step 5 · Build it (Agent mode)
+## Step 7 · Verify the dashboard (run a Skill)
 
-Time to ship. Switch to **Agent** mode and select **Composer 2.5**.
-
-Paste this prompt:
-
-```
-@data/revenue_by_gpu_type.csv @design/gpu-section-spec.md @design/design-tokens.json @dashboard.js @data.js @styles.css
-Add a "Revenue by GPU type" section to the dashboard using this CSV, matching the
-design spec and tokens. Read the CSV and inline the data into the app (do NOT fetch
-it at runtime, since the page is opened directly from a file). Show revenue by GPU
-type for the latest month, plus a 6-month trend that makes the mix shift obvious.
-Use the GPU-type colors from the tokens. Call out the fastest-growing GPU type and
-flag where GB200 overtakes A100.
-```
-
-### What happens when you hit send
-
-The [Agent](https://cursor.com/docs/agent/overview) will:
-
-1. **Read** the files you tagged with `@`
-2. **Search** the codebase for patterns to follow
-3. **Edit** multiple files (data, HTML, CSS, JavaScript)
-4. **Show you** what changed so you can review
-
-You don't write code. You describe what you want, point at the right files, and the agent figures out the rest.
-
----
-
-## ✅ Step 6 · Verify the dashboard (your first Skill)
-
-Two ways to check your work: let a skill do it, then trust your own eyes.
-
-### Run a ready-made Skill
-
-**[Skills](https://cursor.com/docs/skills)** are reusable workflows you run by name, like saved recipes. Describe the steps once, and anyone can trigger them with a slash command.
-
-This repo ships one for exactly this moment: **`/verify-dashboard`**. It reads your files and checks the new section against the workshop's acceptance criteria. Type it in chat:
+**[Skills](https://cursor.com/docs/skills)** are reusable workflows you run by name, like saved recipes. This repo ships one for this exact moment. Run it:
 
 ```
 /verify-dashboard
 ```
 
-It reports a short pass/fail list: is the card there? does June total $415M? is the GB200-over-A100 crossover shown? is the data inlined instead of fetched? If anything failed, paste the suggested fix and run it again.
+It reads your files and reports a short pass/fail list: is the card there? does June total $415M? is the GB200-over-A100 crossover shown? is the data inlined instead of fetched? If anything fails, paste the suggested fix and run it again.
 
-### Look with your own eyes
+Then **look with your own eyes**: refresh `dashboard.html` in your browser (or restart the server) and check the **"Revenue by GPU type"** card for the latest-month breakdown, the 6-month mix shift, GB200 as the fastest grower, and the moment GB200 overtakes A100.
 
-Go back to your browser and **refresh** `dashboard.html`. Check the **"Revenue by GPU type"** card:
-
-- Latest month breakdown by GPU type
-- 6-month trend showing the mix shift
-- GB200 highlighted as the fastest grower
-- The moment GB200 overtakes A100 called out
-
-You just shipped a feature, and verified it two ways.
-
-**If you're ahead, try one of these follow-ups in Agent mode:**
+**Ahead of the group?** Try a follow-up in Agent mode:
 
 ```
 Change the GPU-type chart to a stacked view so I can see the mix each month.
 ```
 
-```
-Recolor the chart so GB200 stands out and the legacy A100 is muted.
-```
-
-Play around. This is your dashboard now.
-
 ---
 
-## 📊 Step 7 · Make your own Skill (and your slides)
+## Step 8 · Make slides, then make your own Skill
 
-You just *ran* a skill. Now *build* one. First, knock out the deck you owe leadership with a second ready-made skill.
-
-### Run the slides Skill
-
-This repo also ships **`/branded-deck`**. It reads your dashboard, pulls the real numbers, applies the brand rule, and generates a polished `.pptx`. No Slack, Linear, Notion, or internal tools needed, just the files in this repo.
-
-Type **`/branded-deck`** in chat and paste:
+First, knock out the deck you owe leadership with a second ready-made skill, `/branded-deck`:
 
 ```
-/branded-deck Summarize this for leadership: headline revenue, revenue by GPU
-type, the 6-month mix shift toward GB200, and 3 takeaways. Read the numbers from
+/branded-deck Summarize this for leadership: headline revenue, revenue by GPU type,
+the 6-month mix shift toward GB200, and 3 takeaways. Read the numbers from
 @dashboard.html and @data/revenue_by_gpu_type.csv.
 ```
 
-Behind the scenes it:
+It follows the brand rule, reads the real numbers from your files, and generates a polished `.pptx`. No outside tools needed.
 
-1. Follows `.cursor/rules/cursor-brand.mdc` for on-brand styling
-2. Reads the built dashboard and CSV for real numbers
-3. Uses the built-in slide generator to produce the `.pptx`
-
-### Now create your own
-
-You've run two skills (`/verify-dashboard` and `/branded-deck`). Making your own is just as easy. Type **`/create-skill`** and describe a workflow you repeat, for example:
+You have now run two skills. Building your own is just as easy, with `/create-skill`:
 
 ```
 /create-skill A "monthly-refresh" skill that re-reads data/revenue_by_gpu_type.csv,
 updates the dashboard numbers, runs /verify-dashboard, then runs /branded-deck.
 ```
 
-Cursor saves it under `.cursor/skills/` so you and your teammates can run it by name from then on.
+Cursor saves it under `.cursor/skills/` so you and your teammates can run it by name anytime.
 
 ---
 
-## ⚡ Step 8 · Automate the whole loop (high level)
+## Step 9 · Automate the whole loop
 
-Everything you did today was manual: you pasted prompts, reviewed plans, and refreshed the browser. What if it happened automatically every month?
+Everything so far was manual: you pasted prompts and refreshed the browser. What if it ran on its own every month?
 
 **[Cursor Automations](https://cursor.com/docs/cloud-agent/automations)** are always-on cloud agents. You set a trigger (like a schedule), write instructions, and Cursor runs the job in the background without you in the IDE.
-
-Here's what a monthly version of today's work could look like:
 
 ```mermaid
 flowchart TD
@@ -335,43 +289,39 @@ flowchart TD
   GenSlides --> Notify["Agent posts the deck for review"]
 ```
 
-| Step | What the automation does |
-|---|---|
-| **Trigger** | Runs on the 1st of every month (cron schedule) |
-| **Fetch data** | Pulls the latest revenue-by-GPU export (from a CSV, database, or API) |
-| **Update dashboard** | Inlines the new numbers into `data.js` and refreshes the charts |
-| **Verify** | Runs `/verify-dashboard` to catch data or rendering issues before slides |
-| **Generate slides** | Runs the `/branded-deck` skill with the updated dashboard |
-| **Notify** | Posts the new deck somewhere your team can review (email, Slack, or a shared folder) |
 
-You wouldn't build this today. But now you know the shape: **the same loop you just did by hand, running on autopilot.**
 
-Create one at [cursor.com/automations](https://cursor.com/automations) or in the Agents window when you're ready.
+
+| Step                 | What the automation does                        |
+| -------------------- | ----------------------------------------------- |
+| **Trigger**          | Runs on the 1st of every month                  |
+| **Fetch data**       | Pulls the latest revenue-by-GPU export          |
+| **Update dashboard** | Inlines the new numbers and refreshes charts    |
+| **Verify**           | Runs `/verify-dashboard` before slides          |
+| **Generate slides**  | Runs `/branded-deck` with the updated dashboard |
+| **Notify**           | Posts the deck somewhere your team can review   |
+
+
+You would not build this today, but now you know the shape: the same loop you just did by hand, running on autopilot. Create one at [cursor.com/automations](https://cursor.com/automations) when you are ready.
 
 ---
 
-## 🎉 Step 9 · Review what we did
+## Step 10 · Review what you did
 
-Take a breath. Look at what you built.
 
-| Step | What you learned |
-|---|---|
-| 1. Story | Read messy input and understand the real ask |
-| 2. Codebase | Know where files live and which model/mode to pick |
-| 3. Plan | Turn a call transcript into a structured spec ([Plan mode](https://cursor.com/docs/agent/plan-mode)) |
-| 4. Iterate | Add designs with `@`, set standing preferences with [Rules](https://cursor.com/docs/rules) |
-| 5. Build | Ship a feature with [Agent mode](https://cursor.com/docs/agent/overview) + Composer 2.5 |
-| 6. Verify | Run a ready-made [Skill](https://cursor.com/docs/skills) (`/verify-dashboard`), then eyeball it |
-| 7. Present | Run the `/branded-deck` skill, then build your own with `/create-skill` |
-| 8. Automate | See how the whole loop could run on a schedule ([Automations](https://cursor.com/docs/cloud-agent/automations)) |
+| Step            | What you learned                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------------ |
+| 1. First prompt | Open a chat, pick a [model](https://cursor.com/docs/models-and-pricing) and mode, ask in plain English |
+| 2. Repo tour    | Explore safely in Ask mode and run the dashboard locally                                               |
+| 3. The call     | Use `@` and [context](https://cursor.com/docs/agent/prompting) to focus on what matters                |
+| 4. Plan         | Turn the call into a spec, shaped by the design ([Plan mode](https://cursor.com/docs/agent/plan-mode)) |
+| 5. Build        | Ship a feature with [Agent mode](https://cursor.com/docs/agent/overview) and Composer 2.5              |
+| 6. Rules        | Set standing preferences with [Rules](https://cursor.com/docs/rules)                                   |
+| 7. Verify       | Run a ready-made [Skill](https://cursor.com/docs/skills), then eyeball it                              |
+| 8. Present      | Generate slides, then build your own skill                                                             |
+| 9. Automate     | See the whole loop run on a schedule ([Automations](https://cursor.com/docs/cloud-agent/automations))  |
 
-**What Cursor learned from you:**
 
-- A **rule** (your chart caption preference) that applies to every future chat
-- A **skill** of your own, on top of the ready-made `/verify-dashboard` and `/branded-deck`, runnable by name anytime
+**What Cursor learned from you:** a **rule** (your chart-caption preference) that applies to every future chat, and a **skill** of your own, runnable by name anytime.
 
-**What you can do next:**
-
-Swap in *your* call notes, *your* spreadsheet, *your* design files. The loop stays the same: listen → structure → build → verify → present → automate.
-
-That's Cursor for everyone.
+**What is next:** swap in *your* call notes, *your* spreadsheet, *your* design files. The loop stays the same: listen, structure, build, verify, present, automate.
