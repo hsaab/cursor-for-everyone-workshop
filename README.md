@@ -167,7 +167,7 @@ Now structure the work before any code gets written. Switch to **Plan** mode (Sh
 
 ```
 @transcript.md Turn this call into a short, concrete spec for what to build.
-Group it into "dashboard changes" and "slides". Bullet points only.
+Group it into "dashboard changes" and "slides".
 ```
 
 Cursor reads the transcript, asks clarifying questions if needed, and produces a plan you can review and edit before building. That is the point of [Plan mode](https://cursor.com/docs/agent/plan-mode): think first, build second.
