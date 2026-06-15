@@ -17,21 +17,21 @@ palette, the type scale, the per-slide layout archetypes, the chart rules, and t
 ## Golden rules
 
 1. One idea per slide. Generous whitespace, big numbers, short labels. More slides
-   beat one crowded slide.
+  beat one crowded slide.
 2. One accent, used once. Cursor orange `#F54E00` marks the single thing that
-   should stand out on each slide (usually the GB200 story). Everything else uses
+  should stand out on each slide (usually the GB200 story). Everything else uses
    the muted neutral palette.
 3. Charts over bullets. If a number is clearer shown than told (a breakdown, a
-   trend, a crossover), draw a chart with muted series and a single accent series,
+  trend, a crossover), draw a chart with muted series and a single accent series,
    not a bullet list.
 4. Never invent numbers. Every figure traces to `dashboard.html` and
-   `data/revenue_by_gpu_type.csv`. If you cannot source it, cut it.
+  `data/revenue_by_gpu_type.csv`. If you cannot source it, cut it.
 5. No em dashes. Anywhere. Use periods, commas, colons, or parentheses, and scrub
-   the whole deck before finishing (see design-system.md).
+  the whole deck before finishing (see design-system.md).
 6. Self-contained. Do not pull from Slack, Linear, Notion, Figma, or any external
-   tool. This repo plus a local `.pptx` library is all you need.
+  tool. This repo plus a local `.pptx` library is all you need.
 7. Match the reference. Inherit the look of the example deck below. Do not invent a
-   new style.
+  new style.
 
 ## Inputs (read these first)
 
@@ -40,22 +40,11 @@ palette, the type scale, the per-slide layout archetypes, the chart rules, and t
 - `dashboard.html`: the layout, labels, and story Cursor surfaced.
 - `data/revenue_by_gpu_type.csv`: the source of every figure in the deck.
 
-## Visual reference (match this look)
-
-A finished example deck, built to the spec in design-system.md, lives in Figma:
-
-https://www.figma.com/slides/rukpsn4ZqyScA0P3Ij4UTR
-
-Open it in a browser to see the target: a dark cover with one big number, the
-GPU-type bar chart, the GB200-over-A100 crossover, and the takeaway cards. It is a
-formatting reference only and uses this repo's synthetic numbers. The build spec in
-design-system.md is the source of truth; the link is just the picture of "good".
-
 ## Default outline
 
 1. Title: the headline revenue (latest month plus month-over-month change).
 2. Revenue by GPU type: the latest-month breakdown as a horizontal bar chart, GB200
-   in accent, the rest in muted neutrals.
+  in accent, the rest in muted neutrals.
 3. The mix shift: the 6-month trend showing the GB200 ramp overtaking A100.
 4. Takeaways: 3 crisp, decision-oriented points for leadership.
 
